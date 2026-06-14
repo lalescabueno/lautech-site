@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slot — Conheça o app</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:'Montserrat',sans-serif;
+    background:linear-gradient(160deg,#0D0B1A 0%,#16122E 100%);
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .topo{
+    flex-shrink:0; text-align:center; padding:16px 16px 14px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .logo{display:inline-flex; align-items:center; gap:9px; margin-bottom:12px;}
+  .logo svg{width:26px; height:26px;}
+  .logo-txt{font-size:16px; font-weight:300; color:rgba(255,255,255,0.92);}
+  .logo-txt strong{font-weight:800;}
+
+  .switch{
+    display:inline-flex; background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.1); border-radius:100px; padding:4px; gap:4px;
+  }
+  .switch button{
+    border:none; background:transparent; color:rgba(255,255,255,0.6);
+    font-family:inherit; font-size:13px; font-weight:700; padding:9px 18px;
+    border-radius:100px; cursor:pointer; transition:all .2s; white-space:nowrap;
+  }
+  .switch button.on{
+    background:linear-gradient(135deg,#7C3AED,#F472B6); color:#fff;
+    box-shadow:0 6px 16px rgba(124,58,237,0.35);
+  }
+
+  .frames{flex:1; position:relative;}
+  .frames iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:none;
+    opacity:0; pointer-events:none; transition:opacity .25s;
+  }
+  .frames iframe.on{opacity:1; pointer-events:auto;}
+</style>
+</head>
+<body>
+
+  <div class="topo">
+    <div class="logo">
+      <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="19" cy="19" rx="8" ry="13" fill="#C084FC" opacity="0.5" transform="rotate(-45 19 19)"/>
+        <ellipse cx="19" cy="19" rx="8" ry="13" fill="#F472B6" opacity="0.5" transform="rotate(45 19 19)"/>
+        <ellipse cx="19" cy="19" rx="8" ry="13" fill="#C084FC" opacity="0.5" transform="rotate(0 19 19)"/>
+        <ellipse cx="19" cy="19" rx="8" ry="13" fill="#F472B6" opacity="0.5" transform="rotate(90 19 19)"/>
+        <circle cx="19" cy="19" r="10" fill="#C084FC"/>
+        <rect x="14" y="11" width="5" height="16" rx="2" fill="white"/>
+        <rect x="14" y="21" width="11" height="5" rx="2" fill="white"/>
+      </svg>
+      <span class="logo-txt">Lau<strong>tech</strong> · Slot</span>
+    </div>
+    <div class="switch">
+      <button id="btn-cli" class="on" onclick="trocar('cli')">Para a cliente</button>
+      <button id="btn-pro" onclick="trocar('pro')">Para a profissional</button>
+    </div>
+  </div>
+
+  <div class="frames">
+    <iframe id="f-cli" class="on" src="demo-cliente.html" title="Experiência da cliente"></iframe>
+    <iframe id="f-pro" src="demo-profissional.html" title="Experiência da profissional"></iframe>
+  </div>
+
+<script>
+  function trocar(qual){
+    const cli = qual === 'cli';
+    document.getElementById('f-cli').classList.toggle('on', cli);
+    document.getElementById('f-pro').classList.toggle('on', !cli);
+    document.getElementById('btn-cli').classList.toggle('on', cli);
+    document.getElementById('btn-pro').classList.toggle('on', !cli);
+  }
+</script>
+</body>
+</html>
