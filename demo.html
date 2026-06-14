@@ -14,10 +14,10 @@
     display:flex; flex-direction:column; overflow:hidden;
   }
   .topo{
-    flex-shrink:0; text-align:center; padding:16px 16px 14px;
-    border-bottom:1px solid rgba(255,255,255,0.06);
+    flex-shrink:0; display:flex; align-items:center; justify-content:space-between;
+    padding:16px 16px 14px; border-bottom:1px solid rgba(255,255,255,0.06);
   }
-  .logo{display:inline-flex; align-items:center; gap:9px; margin-bottom:12px;}
+  .logo{display:inline-flex; align-items:center; gap:9px;}
   .logo svg{width:26px; height:26px;}
   .logo-txt{font-size:16px; font-weight:300; color:rgba(255,255,255,0.92);}
   .logo-txt strong{font-weight:800;}
@@ -42,6 +42,9 @@
     opacity:0; pointer-events:none; transition:opacity .25s;
   }
   .frames iframe.on{opacity:1; pointer-events:auto;}
+  @media(max-width:560px){
+    .topo{flex-direction:column; align-items:center; gap:12px;}
+  }
 </style>
 </head>
 <body>
